@@ -16,8 +16,9 @@
   --background-modal: rgba(46, 47, 66, 0.4);
   --color-dairy-modal: #fcfcfc;
 
-  --indent: 24px;
-  --items: 3;
+  --indent-horizontal: 72px;
+  --indent-vertical: 24px;
+  --items: 1;
 
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -65,8 +66,15 @@ img {
 }
 
 .section {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+/*Desktop styles*/
+@media only screen and (min-width: 1158px) {
+  .section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }
 /**
   |===========================================
@@ -75,13 +83,28 @@ img {
 */
 
 .container {
-  max-width: 1158px;
-  padding: 0 15px;
+  /*Basic styles*/
+  min-width: 320px;
+  max-width: 428px;
+  padding: 0 16px;
   margin: 0 auto;
 
-  /*outline: 2px solid red;*/
+  outline: 2px solid red;
+}
+/*Tablet styles*/
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
 }
 
+/*Desktop styles*/
+@media only screen and (min-width: 1158px) {
+  .container {
+    max-width: 1158px;
+    padding: 0 15px;
+  }
+}
 /**
   |==========================================
   |                Скриті заголовки
@@ -262,11 +285,13 @@ img {
 
   color: var(--color-text-white);
   background-color: var(--acent-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
 .btn:hover,
-.btn:focus {
+.btn:focus,
+.btn:active {
   background-color: var(--acent-color-active);
 }
 
@@ -279,11 +304,13 @@ img {
 .card-set {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--indent);
+  row-gap: var(--indent-horizontal);
+  column-gap: var(--indent-vertical);
+  justify-content: center;
 }
 
 .card-sed-item {
-  flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+  flex-basis: calc((100% - var(--indent-vertical) * (var(--items) - 1)) / var(--items));
 }
 
 /**
@@ -311,15 +338,30 @@ img {
 }
 
 .hero-title {
-  max-width: 496px;
-  margin: 0px auto 48px;
+  max-width: 320px;
+  margin: 0px auto 72px;
 
-  font-size: 56px;
-  line-height: 1.07;
-  letter-spacing: 0.02em;
+  font-size: 36px;
+  line-height: 1.11;
   text-align: center;
-
+  text-transform: capitalize;
   color: var(--color-text-white);
+}
+
+@media only screen and (min-width: 768px) {
+  .hero-title {
+    max-width: 496px;
+    margin: 0px auto 36px;
+
+    font-size: 56px;
+    line-height: 1.07;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .hero-title {
+    margin: 0px auto 48px;
+  }
 }
 
 .btn.hero {
@@ -337,21 +379,46 @@ img {
   |             Секція переваг
   |===================================
 */
-
-.features.list {
-  --items: 4;
+@media only screen and (min-width: 768px) {
+  .features.list {
+    --items: 2;
+  }
 }
 
 .thumb {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
+}
 
-  height: 112px;
-  margin-bottom: 8px;
+@media only screen and (min-width: 1158px) {
+  .features.list {
+    --items: 4;
+  }
 
-  border-radius: 4px;
-  background: var(--background-color-gris);
+  .thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 112px;
+    margin-bottom: 8px;
+
+    border-radius: 4px;
+    background: var(--background-color-gris);
+  }
+}
+@media only screen and (min-width: 428px) and (max-width: 1157px) {
+  .features.subtitle {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.11;
+
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .features.text {
+    font-weight: 500;
+  }
 }
 
 /**
@@ -361,11 +428,22 @@ img {
 */
 
 .working.section {
+  display: none;
   padding-top: 0px;
 }
 
-.working.item {
-  border-bottom: 1px solid var(--color-cornflower);
+@media only screen and (min-width: 1158px) {
+  .working.section {
+    display: block;
+  }
+
+  .working.list {
+    --items: 3;
+  }
+
+  .working.item {
+    border-bottom: 1px solid var(--color-cornflower);
+  }
 }
 
 /**
@@ -379,7 +457,25 @@ img {
 }
 
 .team.list {
-  --items: 4;
+  padding-left: 66px;
+  padding-right: 66px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1157px) {
+  .team.list {
+    padding-left: 92px;
+    padding-right: 92px;
+
+    --items: 2;
+    --indent-horizontal: 64px;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .team.list {
+    --items: 4;
+    padding: 0;
+  }
 }
 
 .team.item {
@@ -399,9 +495,8 @@ img {
 
 .media-social {
   --items: 4;
-  justify-content: center;
 
-  height: 40px;
+  min-height: 40px;
   padding-right: 16px;
   padding-left: 16px;
 }
@@ -422,7 +517,8 @@ img {
 }
 
 .social-link:hover,
-.social-link:focus {
+.social-link:focus,
+.social-link:active {
   background-color: var(--acent-color-active);
 }
 
@@ -435,12 +531,25 @@ img {
   | Секція клієнтів
   |============================
 */
-.clients .section-title {
-  line-height: 1.1;
-}
 
 .clients.list {
-  --items: 6;
+  --items: 2;
+  --indent-vertical: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  .clients.list {
+    padding-left: 92px;
+    padding-right: 92px;
+    --items: 3;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .clients.list {
+    padding: 0;
+    --items: 6;
+  }
 }
 
 .clients.link {
@@ -458,7 +567,8 @@ img {
 }
 
 .clients.link:hover,
-.clients.link:focus {
+.clients.link:focus,
+.clients.link:active {
   color: var(--acent-color-active);
   border: 1px solid var(--acent-color-active);
 }
@@ -468,7 +578,8 @@ img {
 }
 
 .clients-icon:hover,
-.clients-icon:focus {
+.clients-icon:focus,
+.clients-icon:active {
   fill: currentColor;
 }
 
@@ -478,14 +589,31 @@ img {
 |========================================
 */
 .category.list {
-  margin-bottom: 72px;
   --items: 5;
-  justify-content: center;
-  align-items: center;
+  --indent-horizontal: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  margin-bottom: 48px;
+}
+
+@media only screen and (min-width: 768px) {
+  .category.list {
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 64px;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .category.list {
+    margin-bottom: 72px;
+  }
 }
 
 .btn.gallery {
-  padding: 12px 24px;
+  padding: 8px 16px;
 
   transition: color 250ms var(--timing-function), background-color 250ms var(--timing-function),
     box-shadow 250ms var(--timing-function), border-color 250ms var(--timing-function);
@@ -494,6 +622,12 @@ img {
   border-radius: 4px;
   color: var(--acent-color);
   background-color: var(--background-color-gris);
+}
+
+@media only screen and (min-width: 768px) {
+  .btn.gallery {
+    padding: 12px 24px;
+  }
 }
 
 .btn.gallery:hover,
@@ -512,18 +646,40 @@ img {
 */
 
 .page-gallery {
-  padding-top: 96px;
-  padding-bottom: 120px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+@media only screen and (min-width: 768px) {
+  .page-gallery {
+    padding-top: 64px;
+    padding-bottom: 96px;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .page-gallery {
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
 }
 
 .gallery.card-set {
-  column-gap: var(--indent);
-  row-gap: 48px;
+  --indent-horizontal: 48px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1157px) {
+  .gallery.card-set {
+    --indent-horizontal: 72px;
+    --items: 2;
+  }
 }
 
-.gallery .desc-wrap {
-  padding-left: 16px;
+@media only screen and (min-width: 1158px) {
+  .gallery.card-set {
+    --items: 3;
+  }
 }
+
 .gallery.link {
   display: block;
 
@@ -554,17 +710,30 @@ img {
   margin-bottom: 48px;
 }*/
 
+.gallery .desc-wrap {
+  padding-left: 16px;
+
+  text-align: left;
+
+  border-right: 1px solid var(--background-color-gris);
+  border-bottom: 1px solid var(--background-color-gris);
+  border-left: 1px solid var(--background-color-gris);
+
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
+}
+
+@media only screen and (min-width: 1158px) {
+  .gallery .desc-wrap {
+    border-right: 1px solid var(--color-cornflower);
+    border-bottom: 1px solid var(--color-cornflower);
+    border-left: 1px solid var(--color-cornflower);
+    box-shadow: none;
+  }
+}
+
 .gallery .text {
   letter-spacing: 0.02em;
   color: var(--color-slate);
-}
-
-.gallery .desc-wrap {
-  border-right: 1px solid var(--color-cornflower);
-  border-bottom: 1px solid var(--color-cornflower);
-  border-left: 1px solid var(--color-cornflower);
-
-  text-align: left;
 }
 
 .gallery-thumb {
