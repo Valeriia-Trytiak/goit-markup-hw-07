@@ -25,8 +25,14 @@
     <!--Шапка профілю з навігацією та лого-->
     <header class="header">
       <div class="header-container container">
+        <a class="logo link" href="./index.html">Web<span class="upper-logo">Studio</span></a>
+        <!--Бургер-кнопка-->
+        <button class="menu-toggle js-open-menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg width="32" height="22">
+            <use href="./images/icons.svg#icon-menu-hamburger"></use>
+          </svg>
+        </button>
         <nav class="nav">
-          <a class="logo link" href="./index.html">Web<span class="upper-logo">Studio</span></a>
           <ul class="site-nav list">
             <li class="item">
               <a class="link current" href="./index.html">Studio</a>
@@ -409,7 +415,7 @@
     </main>
 
     <!--Підвал-->
-    <!-- <footer class="page-footer">
+    <footer class="page-footer">
       <div class="footer-container container">
         <div class="footer-left-part">
           <a class="logo link" href="./index.html">Web<span class="lower-logo">Studio</span></a>
@@ -452,7 +458,7 @@
           </ul>
         </div>
       </div>
-    </footer> -->
+    </footer>
 
     <!--Модальне вікно -->
     <div class="backdrop is-hidden" data-modal>
@@ -496,6 +502,62 @@
       </div>
     </div>
 
+    <!--Мобільне меню-->
+    <div class="menu-container js-menu-container" id="mobile-menu">
+      <button class="menu-toggle js-close-menu">
+        <svg class="modal-close-icon" width="8" height="8">
+          <use href="./images/icons.svg#icon-modal-close"></use>
+        </svg>
+      </button>
+      <ul class="mobile-menu list">
+        <li class="mobile-menu-item"><a href="./index.html" class="mobile-link link">Studio</a></li>
+        <li class="mobile-menu-item"><a href="./portfolio.html" class="mobile-link link">Portfolio</a></li>
+        <li class="mobile-menu-item"><a href="" class="mobile-link link">Contacts</a></li>
+      </ul>
+
+      <ul class="mobile-contacts list">
+        <li><a href="tel:+110001111111" class="mobile-link link">+11 (000) 111-11-11</a></li>
+        <li><a href="mailto:info@devstudio.com" class="mail link">info@devstudio.com</a></li>
+      </ul>
+
+      <ul class="mobile-social list card-set">
+        <li class="card-sed-item">
+          <a class="social-link link" aria-label="Instagram" href="" target="_blank" rel="noopener no-referrer">
+            <svg class="social-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="card-sed-item">
+          <a class="social-link link" aria-label="Twitter" href="" target="_blank" rel="noopener no-referrer">
+            <svg class="social-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-twitter"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="card-sed-item">
+          <a class="social-link link" aria-label="Facebook" href="" target="_blank" rel="noopener no-referrer">
+            <svg class="social-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="card-sed-item">
+          <a class="social-link link" aria-label="Linkedin" href="" target="_blank" rel="noopener no-referrer">
+            <svg class="social-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-linkedin"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
     <script src="./js/modal.js"></script>
+    <!--Mobile-menu scripts-->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/body-scroll-lock/3.1.5/bodyScrollLock.min.js"
+      integrity="sha512-HowizSDbQl7UPEAsPnvJHlQsnBmU2YMrv7KkTBulTLEGz9chfBoWYyZJL+MUO6p/yBuuMO/8jI7O29YRZ2uBlA=="
+      crossorigin="anonymous"></script>
+    <script defer src="./js/mobile-menu.js"></script>
   </body>
 </html>

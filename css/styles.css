@@ -142,15 +142,31 @@ img {
 
 .header .logo {
   display: inline-block;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  margin-right: 76px;
+  padding-top: 25.5px;
+  padding-bottom: 25.5px;
+  /*margin-right: 250.35px;*/
+}
+@media only screen and (min-width: 768px) {
+  .header .logo {
+    margin-right: 120px;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .header .logo {
+    margin-right: 76px;
+  }
 }
 
 .nav {
   display: flex;
   align-items: center;
-  margin-right: 332px;
+  margin-right: auto;
+}
+@media only screen and (max-width: 767px) {
+  .nav {
+    display: none;
+  }
 }
 
 .site-nav.list {
@@ -194,15 +210,39 @@ img {
 }
 
 .address {
-  font-weight: inherit;
   font-style: normal;
-  color: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17px;
+  letter-spacing: 0.04em;
+  color: var(--color-slate);
+}
+
+@media only screen and (max-width: 767px) {
+  .address {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1158px) {
+  .address {
+    font-size: 16px;
+    line-height: 1.5px;
+    letter-spacing: 0.02em;
+  }
 }
 
 .address .list {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 12px;
   align-items: center;
+}
+
+@media only screen and (min-width: 1158px) {
+  .address .list {
+    flex-direction: row;
+    gap: 40px;
+  }
 }
 
 .address.link {
@@ -779,14 +819,28 @@ img {
 */
 
 .page-footer {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 96px;
+  padding-bottom: 96px;
 
   background-color: var(--background-color-dark);
 }
+
+@media only screen and (min-width: 1158px) {
+  .page-footer {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
 .footer-container {
-  display: flex;
-  align-items: baseline;
+  display: block;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+  .footer-container {
+    display: flex;
+    align-items: baseline;
+  }
 }
 
 .page-footer .logo {
@@ -910,3 +964,164 @@ img {
 .modal-close-btn:focus .modal-close-icon {
   fill: currentColor;
 }
+
+/**
+  |============================
+  | Hamburger-menu
+  |============================
+*/
+
+.menu-toggle {
+  height: 22px;
+  width: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+}
+@media (min-width: 768px) {
+  .menu-container {
+    display: none;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}
+.menu-toggle:hover,
+.menu-toggle:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+
+  background-color: var(--background-color-white);
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.menu-container.is-open {
+  transform: translateX(0);
+}
+
+.menu-container .menu-toggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-navy);
+}
+
+.mobile-menu {
+  margin-bottom: auto;
+}
+
+.mobile-menu-item {
+  padding-bottom: 40px;
+}
+
+.mobile-menu-item:last-child {
+  padding-bottom: 0px;
+}
+
+.mobile-link {
+  display: block;
+
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  text-transform: capitalize;
+  color: var(--color-navy);
+}
+
+.mobile-contacts {
+  margin-bottom: 48px;
+}
+.mobile-contacts .mobile-link {
+  padding-bottom: 40px;
+  color: var(--acent-color);
+}
+.mobile-contacts .mail {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-slate);
+}
+
+.mobile-social {
+  --indent-vertical: 56px;
+  --items: 4;
+  height: 40px;
+  padding-right: 60px;
+}
+
+.mobile-social .social-icon {
+  width: 24px;
+  height: 24px;
+}
+/*
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+  padding: 40px;
+  padding-top: 80px;
+  background-color: #3f51b5;
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.menu-container.is-open {
+  transform: translateX(0);
+}
+
+.menu-container .menu-toggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: black;
+}
+
+.mobile-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.mobile-menu .link {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}*/
